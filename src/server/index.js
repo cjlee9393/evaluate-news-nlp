@@ -1,10 +1,18 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const cors = require('cors');
 
 const app = express()
 
 app.use(express.static('dist'))
+
+// middleware
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
+
+// cross-origin allowance
+app.use(cors());
 
 console.log(__dirname)
 
@@ -21,4 +29,14 @@ app.listen(8080, function () {
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
+})
+
+app.post('/add', (req, res) => {
+    console.log('post route');
+
+    const data = req.body;
+
+    console.log(data);
+
+    res.json(data);
 })

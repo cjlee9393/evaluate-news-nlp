@@ -6,10 +6,9 @@ function handleSubmit(event) {
     Client.checkForName(formText)
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
+    Client.postData('http://localhost:8080/add', {url: formText})
     .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
+        document.getElementById('results').innerHTML = res
     })
 }
 
