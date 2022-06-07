@@ -8,8 +8,16 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::")
     Client.postData('http://localhost:8080/add', {url: formText})
     .then(function(res) {
-        document.getElementById('results').innerHTML = res;
-        console.log(res);
+        const textDiv = document.getElementById('text')
+
+        textDiv.innerHTML = '';
+        for (let text of res.texts){
+            textDiv.innerHTML += text;
+        }
+
+        const resultDiv = document.getElementById('result')
+        resultDiv.innerHTML = `Polarity:     ${res.polarity}<br>
+                               Subjectivity: ${res.subjectivity}`;
     })
 }
 
