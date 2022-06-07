@@ -8,7 +8,8 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::")
     Client.postData('http://localhost:8080/add', {url: formText})
     .then(function(res) {
-        document.getElementById('results').innerHTML = res
+        document.getElementById('results').innerHTML = res;
+        console.log(res);
     })
 }
 

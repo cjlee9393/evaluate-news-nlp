@@ -4,7 +4,7 @@ const jsdom = require('jsdom');
 /*
 fetch <p> elements from given url, randomly choose <p> element and return its textContent
 */
-async function fetchText(url, idx){
+async function fetchText(url){
     const res = await fetch(url);
     const html = await res.text();
 
@@ -12,6 +12,8 @@ async function fetchText(url, idx){
     const document = dom.window.document;
 
     const ps = document.querySelectorAll('p');
+
+    const idx = Math.ceil(Math.random() * ps.length);
 
     return ps[idx].textContent;
 }

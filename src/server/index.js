@@ -1,9 +1,12 @@
 var path = require('path')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+const mockAPI = require('./mockAPI.js')
+const utilsIndex = require('./utils.index.js')
 const cors = require('cors');
 
 const app = express()
+
+const lang = 'auto' // for APIResponse();
 
 app.use(express.static('dist'))
 
@@ -34,9 +37,15 @@ app.get('/test', function (req, res) {
 app.post('/add', (req, res) => {
     console.log('post route');
 
-    const data = req.body;
+    const url = req.body.url;
 
-    console.log(data);
+    utilsIndex.fetchText(url)
+    .then((reqText) => {
+        return mockAPI.getAPIResponse(reqText, lang)
+    })
+    .then(({status, body}) =>{
+        const parsedResponse = mockAPI.parseAPIResponse(body);
 
-    res.json(data);
+        res.json(parsedResponse);
+    })
 })

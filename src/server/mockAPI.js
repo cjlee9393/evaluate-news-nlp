@@ -36,4 +36,18 @@ async function getAPIResponse(text, lang){
     }
 }
 
-module.exports = {json, getAPIResponse}
+function parseAPIResponse(body){
+    // polarity, subjectivity, text
+    const polarity = body.agreement;
+    const subjectivity = body.subjectivity;
+    
+    console.log(body.sentence_list);
+    const texts = [];
+    for (let sentence of body.sentence_list){
+        texts.push(sentence.text);
+    }
+
+    return {polarity, subjectivity, texts};
+}
+
+module.exports = {json, getAPIResponse, parseAPIResponse}

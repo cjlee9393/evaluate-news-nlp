@@ -1,0 +1,99 @@
+{
+    "agreement": "AGREEMENT",
+    "confidence": "100",
+    "irony": "NONIRONIC",
+    "model": "general_en",
+    "score_tag": "P+",
+    "sentence_list": [
+        {
+            "agreement": "AGREEMENT",
+            "bop": "y",
+            "confidence": "100",
+            "endp": "57",
+            "inip": "0",
+            "score_tag": "P+",
+            "segment_list": [
+                {
+                    "agreement": "AGREEMENT",
+                    "confidence": "100",
+                    "endp": "56",
+                    "inip": "0",
+                    "polarity_term_list": [
+                        {
+                            "confidence": "100",
+                            "endp": "23",
+                            "inip": "19",
+                            "score_tag": "P+",
+                            "sentimented_concept_list": [
+                                {
+                                    "endp": "13",
+                                    "form": "restaurant",
+                                    "id": "4d5e117421",
+                                    "inip": "4",
+                                    "score_tag": "P+",
+                                    "type": "Top>Organization>Company>ConsumerGoodsCompany>Discretionary>ConsumerServicesCompany>Restaurants",
+                                    "variant": "restaurant"
+                                }
+                            ],
+                            "text": "great"
+                        }
+                    ],
+                    "score_tag": "P+",
+                    "segment_type": "main",
+                    "sentimented_entity_list": [
+                        {
+                            "endp": "56",
+                            "form": "Madrid",
+                            "id": "3d0a16c68d",
+                            "inip": "51",
+                            "score_tag": "NONE",
+                            "type": "Top>Location>GeoPoliticalEntity>City",
+                            "variant": "Madrid"
+                        }
+                    ],
+                    "text": "The restaurant was great even though it’s not near Madrid"
+                }
+            ],
+            "sentimented_concept_list": [
+                {
+                    "form": "restaurant",
+                    "id": "4d5e117421",
+                    "score_tag": "P+",
+                    "type": "Top>Organization>Company>ConsumerGoodsCompany>Discretionary>ConsumerServicesCompany>Restaurants"
+                }
+            ],
+            "sentimented_entity_list": [
+                {
+                    "form": "Madrid",
+                    "id": "3d0a16c68d",
+                    "score_tag": "NONE",
+                    "type": "Top>Location>GeoPoliticalEntity>City"
+                }
+            ],
+            "text": "The restaurant was great even though it’s not near Madrid."
+        }
+    ],
+    "sentimented_concept_list": [
+        {
+            "form": "restaurant",
+            "id": "4d5e117421",
+            "score_tag": "P+",
+            "type": "Top>Organization>Company>ConsumerGoodsCompany>Discretionary>ConsumerServicesCompany>Restaurants"
+        }
+    ],
+    "sentimented_entity_list": [
+        {
+            "form": "Madrid",
+            "id": "3d0a16c68d",
+            "score_tag": "NONE",
+            "type": "Top>Location>GeoPoliticalEntity>City"
+        }
+    ],
+    "status": {
+        "code": "0",
+        "msg": "OK",
+        "credits": "1",
+        "remaining_credits": "19972"
+    },
+    "subjectivity": "OBJECTIVE"
+}
