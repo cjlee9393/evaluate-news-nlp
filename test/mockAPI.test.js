@@ -8,6 +8,15 @@ const testText = "The restaurant was great even though it’s not near Madrid.";
 const testLang = "en";
 
 const testAPIResponseFile = 'APIResponse.json';
+/*
+above file is save 6.7.2022 using below code
+// write response as file
+        try{
+            fs.writeFileSync(testAPIResponseFile, JSON.stringify(body, null, 4));
+        }catch (err){
+            console.error(err)
+        }
+*/
 
 describe('mockAPI.getAPIResponse() tests', () => {
     it('should return status of 200 and body.agreement of string', async () => {
@@ -15,13 +24,6 @@ describe('mockAPI.getAPIResponse() tests', () => {
 
         expect(status).to.equal(200);
         expect(utils.isString(body.agreement)).to.be.true;
-
-        // write response as file
-        try{
-            fs.writeFileSync(testAPIResponseFile, JSON.stringify(body, null, 4));
-        }catch (err){
-            console.error(err)
-        }
     });
 });
 

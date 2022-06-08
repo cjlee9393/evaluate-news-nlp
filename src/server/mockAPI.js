@@ -41,7 +41,6 @@ function parseAPIResponse(body){
     const polarity = body.agreement;
     const subjectivity = body.subjectivity;
     
-    console.log(body.sentence_list);
     const texts = [];
     for (let sentence of body.sentence_list){
         texts.push(sentence.text);
