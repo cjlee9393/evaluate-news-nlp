@@ -20,16 +20,21 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
 
 ### Web app
 1. Install dependencies with npm
-    ```bash
-    # Initialize npm
-    npm i
-    ```
-  - For reference, proposed set of packages with their versions are package.json file as well as in *Dependencies* section
-  - In case of conflict, try running with following command
-    ```bash
-    # Initialize npm
-    npm i --force
-    ```
+    1. remove entry of node-sass package from package.json
+    2. install dependencies
+      ```bash
+      # Initialize npm
+      npm install --force
+      ```
+    3. install node-sasspackage
+      ```bash
+      npm install node-sass --legacy-peer-deps
+      ```
+    4. install cors package
+      ```bash
+      npm install cors --force
+      ```
+    - For reference, proposed set of packages with their versions are package.json file as well as in *Dependencies* section
 
 2. Configure environment variable
   - Make sure *dotenv* package is installed (it should have been automatically installed by installing dependencies with npm)
@@ -60,7 +65,7 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
     # Open Google Chrome
     open -a 'Google Chrome'
 
-    # connect to http:localhost:8080
+    # connect to server address
     ```
 
 * Run Webpack dev server for development environment
@@ -155,6 +160,7 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
 
 ## References
 
+- Starter code and instructions : https://github.com/udacity/fend/tree/refresh-2019/projects/evaluate-news-nlp
 - meaningCloud API Sentiment Anlaysis API version 2.1 : https://learn.meaningcloud.com/developer/sentiment-analysis/2.1/doc/response
 - How to write Unit Test with NodeJS : https://medium.com/serverlessguru/how-to-unit-test-with-nodejs-76967019ba56
 - How to check if a number is float or integer : https://stackoverflow.com/questions/3885817/how-do-i-check-that-a-number-is-float-or-integer

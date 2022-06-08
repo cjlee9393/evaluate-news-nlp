@@ -11,7 +11,9 @@ function handleSubmit(event) {
     }
 
     console.log("::: Form Submitted :::")
-    Client.postData('http://localhost:8080/add', {url: formText})
+    const serverUrl = window.location.href;
+
+    Client.postData(`${serverUrl}add`, {url: formText})
     .then(function(res) {
         const textDiv = document.getElementById('text')
 
