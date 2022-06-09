@@ -54,12 +54,28 @@ function displayArticle(texts){
     const article = document.querySelector('article');
 
     for (text of texts){
+        const div = document.createElement('div');
+        div.setAttribute('id', 'p__wrapper');
+
         const p = document.createElement('p');
-        
         p.textContent = text;
+        div.appendChild(p);
         
-        article.appendChild(p);
+        const button = document.createElement('button');
+        button.innerHTML = "Remove";
+        button.setAttribute('onclick', "return Client.removeP(event)");
+        div.appendChild(button);
+
+        article.appendChild(div);
     }
 }
 
-module.exports = { handleSubmit, handleGetArticle, displayArticle }
+function removeP(event){
+    if (!event){
+        var event = window.event;
+    } 
+
+    event.target.parentElement.remove(); // remove by removing its wrapper
+}
+
+module.exports = { handleSubmit, handleGetArticle, displayArticle, removeP }
