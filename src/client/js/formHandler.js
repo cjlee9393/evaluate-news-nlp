@@ -78,4 +78,33 @@ function removeP(event){
     event.target.parentElement.remove(); // remove by removing its wrapper
 }
 
-module.exports = { handleSubmit, handleGetArticle, displayArticle, removeP }
+function handleEvaluate(event){
+    event.preventDefault()
+    const ps = document.querySelectorAll('div#p__wrapper p');
+    let article = '';
+
+    for (let p of ps){
+        article += p.textContent;
+    }
+
+    console.log("::: Evaluate Article Request Submitted :::")
+    const serverUrl = window.location.href;
+
+    Client.postData(`${serverUrl}evaluateArticle`, {article: article})
+    .then(function(res) {
+        // TODO: implment displayEvaluation
+        displayEvaluation(res);
+    })
+}
+/*
+evaluation is parsed result of API response
+{polarity: 'string', subjectivity: 'string', texts: ['string1', 'string2', ...]}
+*/
+function displayEvaluation(evaluation){
+    const evalSection = document.getElementById("evaluation");
+
+    evalSection.innerHTML =`Polarity:     ${evaluation.polarity}<br>
+                            Subjectivity: ${evaluation.subjectivity}`
+}
+
+module.exports = { handleSubmit, handleGetArticle, handleEvaluate, removeP }

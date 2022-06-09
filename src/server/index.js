@@ -60,3 +60,16 @@ app.post('/getArticle', function (req, res) {
         res.json({texts: texts});
     })
 })
+
+app.post('/evaluateArticle', function (req, res) {
+    console.log('evaluateArticle route');
+
+    const article = req.body.article;
+
+    mockAPI.getAPIResponse(article, lang)
+    .then(({status, body}) =>{
+        const parsedResponse = mockAPI.parseAPIResponse(body);
+
+        res.json(parsedResponse);
+    })
+})
