@@ -14,4 +14,4 @@ function checkForUrl(inputUrl) {
     return;
 }
 
-export { checkForUrl }
+module.exports = { checkForUrl }

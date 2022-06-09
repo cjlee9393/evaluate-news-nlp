@@ -49,3 +49,14 @@ app.post('/add', (req, res) => {
         res.json(parsedResponse);
     })
 })
+
+app.post('/getArticle', function (req, res) {
+    console.log('getArticle route');
+
+    const url = req.body.url;
+
+    utilsIndex.fetchText(url)
+    .then((texts) => {
+        res.json({texts: texts});
+    })
+})

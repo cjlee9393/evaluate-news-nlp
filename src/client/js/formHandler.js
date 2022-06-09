@@ -28,4 +28,38 @@ function handleSubmit(event) {
     })
 }
 
-export { handleSubmit }
+function handleGetArticle(event){
+    event.preventDefault()
+
+    // check what text was put into the form field
+    let formText = document.getElementById('name').value
+    try{
+        Client.checkForUrl(formText)
+    }catch(error){
+        alert(`error: ${error}`);
+        return;   
+    }
+
+    console.log("::: Get Article Request Submitted :::")
+    const serverUrl = window.location.href;
+
+    Client.postData(`${serverUrl}getArticle`, {url: formText})
+    .then(function(res) {
+        // TODO: display result to UI
+        displayArticle(res.texts);
+    });
+}
+
+function displayArticle(texts){
+    const article = document.querySelector('article');
+
+    for (text of texts){
+        const p = document.createElement('p');
+        
+        p.textContent = text;
+        
+        article.appendChild(p);
+    }
+}
+
+module.exports = { handleSubmit, handleGetArticle, displayArticle }
