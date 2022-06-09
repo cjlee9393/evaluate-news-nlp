@@ -13,9 +13,13 @@ async function fetchText(url){
 
     const ps = document.querySelectorAll('p');
 
-    const idx = Math.ceil(Math.random() * ps.length);
+    const texts = [];
 
-    return ps[idx].textContent;
+    for (let p of ps){
+        texts.push(p.textContent);
+    }
+
+    return texts;
 }
 
 module.exports = {fetchText};
