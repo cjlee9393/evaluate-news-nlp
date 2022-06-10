@@ -164,6 +164,8 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
 - meaningCloud API Sentiment Anlaysis API version 2.1 : https://learn.meaningcloud.com/developer/sentiment-analysis/2.1/doc/response
 - How to write Unit Test with NodeJS : https://medium.com/serverlessguru/how-to-unit-test-with-nodejs-76967019ba56
 - How to check if a number is float or integer : https://stackoverflow.com/questions/3885817/how-do-i-check-that-a-number-is-float-or-integer
+- Udacity logo image: https://seeklogo.com/vector-logo/335154/udacity
+- MeaningCloud logo image: https://www.meaningcloud.com/
 
 ## TODO-list for enhancement
 

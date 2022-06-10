@@ -11,21 +11,35 @@
     </head>
     <body>
         <header>
-            <div class="">
-                Logo
+            <div id="leftBar">
             </div>
-            <div class="">
-                navigation
+            <div id="centerBar">
+                <div id="subBar1">
+                    <form class="" onsubmit="return handleSubmit(event)">
+                        <input id="name" type="text" name="input" value="" placeholder="Name">
+                    </form>
+                        <button id="getArticle" onclick="return Client.handleGetArticle(event)">Get Article</button>
+                        <button id="evaluate" onclick="return Client.handleEvaluate(event)">Evaluate</button>
+                </div>
+                <div id="subBar2">
+                    <button id="checkAll" onclick="">Check All</button>
+                    <button id="uncheckAll" onclick="">Uncheck All</button>
+                    <button id="GotoTop" onclick="">Go To Top</button>
+                    <button id="GotoBottom" onclick="">Go To Bottom</button>
+                </div>
+            </div>
+            <div id="rightBar">
+                <h3>Powered By</h3>
             </div>
         </header>
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" placeholder="Name">
-                    <input type="submit" name="" value="Get Article" onclick="return Client.handleGetArticle(event)">
-                    <input type="submit" name="" value="Evaluate" onclick="return Client.handleEvaluate(event)">
-                </form>
+                <h1>Welcome to evaluate news NLP project</h1>
+                <p>Hi, This is cjlee93. I'm implementing my practice web app. For trial of the web app, please insert address of news or blog article and click 'Get Article.' </p>
+            </section>
+            <section>
+                
             </section>
             <section id="evaluation">
             </section>

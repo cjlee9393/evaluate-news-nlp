@@ -1,14 +1,120 @@
 body {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "none1 main none2"
+        "none1 footer none2";
+    grid-template-columns: 15% 60% 25%;
+    background-color: white;
+}
+
+header {
+    grid-area: header;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    flex-direction: row;
+    border-bottom: 1px solid gray;
+
+    div#leftBar {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 10px;
+
+        div#logo{
+            max-width: 150px;
+        }
+    }
+    div#centerBar {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        
+        div#subBar1{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 0;
+        }
+        div#subBar2{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 0;
+            margin-bottom: 10px;
+
+            button{
+                flex: 1;
+                margin-top: 0;
+                height:15px;
+                font-size: 0.6em;
+            }
+        }
+    }
+    div#rightBar {
+        width: 25%;
+        display: flex;
+        justify-content: right;
+        align-items: flex-start;
+        margin-top: 10px;
+
+        div#poweredBy{
+            max-width: 100px;
+        }
+    }
+    
 }
 
 main {
-    flex: 2;
+    grid-area: main;
+}
+
+footer{
+    grid-area: footer;
+}
+
+form {
+    width: 80%
+}
+
+input {
+    padding: 5px 20px;
+    line-height: 16px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+button {
+    width: 10%;
+    height: 30px;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid rgb(80, 176, 222);
+
+    &:hover{
+        background-color: rgb(80, 176, 222);
+    }
 }
 
 section {
     max-width: 800px;
     margin: 50px auto;
+    background-color: white;
+    
+    &#evaluation{
+        background-color: salmon;
+    }
+}
+
+article {
+    max-width: 800px;
+    margin: 50px auto;
+    
+    div{
+       display: flex;
+       flex-direction: column;
+       background-color: white;
+       border-radius: 10px;
+       padding: 10px;
+       margin: 20px;
+    }
 }
