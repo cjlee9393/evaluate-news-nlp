@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const utils = require('./utils.js');
 const mockAPI = require('../src/server/mockAPI.js');
+const { doesNotReject } = require('assert');
 
 const testText = "The restaurant was great even though it’s not near Madrid.";
 const testLang = "en";
@@ -24,6 +25,8 @@ describe('mockAPI.getAPIResponse() tests', () => {
 
         expect(status).to.equal(200);
         expect(utils.isString(body.agreement)).to.be.true;
+
+        doesNotReject();
     });
 });
 

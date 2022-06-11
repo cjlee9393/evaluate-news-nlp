@@ -72,7 +72,7 @@ function displayArticle(texts){
         div.appendChild(h1);
 
         const p = document.createElement('p');
-        p.textContent = text;
+        p.textContent = remainWords.join(' ');
         div.appendChild(p);
 
         const paraModDiv = document.createElement('div');
@@ -91,7 +91,7 @@ function displayArticle(texts){
 
         const button = document.createElement('button');
         button.innerHTML = "Remove";
-        button.setAttribute('onclick', "return Client.removeP(event)");
+        button.setAttribute('onclick', "return Client.removePWrapper(event)");
         paraModDiv.appendChild(button);
 
         div.appendChild(paraModDiv);
@@ -110,32 +110,51 @@ function parseParagraph(text, n_firstWords){
     return {firstWords, remainWords, wordCount, charCount};
 }
 
-function removeP(event){
+function concatParagraphs(){
+    const divs = document.querySelectorAll('div#p__wrapper');
+    let article = '';
+
+    for (let div of divs){
+        const checkbox = div.querySelector('input[type|=\"checkbox\"]');
+        if (checkbox.checked != true){
+            continue;
+        }else{
+            const h1 = div.querySelector('h1');
+            const p = div.querySelector('p');
+            const text = h1.textContent + ' ' + p.textContent;
+
+            article = (article == '') ? article + text : article + ' ' + text;
+        }
+    }
+
+    return article;
+}
+
+function removePWrapper(event){
     if (!event){
         var event = window.event;
-    } 
+    }
 
-    event.target.parentElement.remove(); // remove by removing its wrapper
+    event.target.parentElement.parentElement.remove(); // remove by removing its wrapper
 }
 
 function handleEvaluate(event){
-    event.preventDefault()
-    const ps = document.querySelectorAll('div#p__wrapper p');
-    let article = '';
-
-    for (let p of ps){
-        article += p.textContent;
+    if (event){   
+        event.preventDefault();
     }
+
+    const article = concatParagraphs();
 
     console.log("::: Evaluate Article Request Submitted :::")
     const serverUrl = window.location.href;
 
     Client.postData(`${serverUrl}evaluateArticle`, {article: article})
     .then(function(res) {
-        // TODO: implment displayEvaluation
+        console.log(res);
         displayEvaluation(res);
     })
 }
+
 /*
 evaluation is parsed result of API response
 {polarity: 'string', subjectivity: 'string', texts: ['string1', 'string2', ...]}
@@ -143,8 +162,9 @@ evaluation is parsed result of API response
 function displayEvaluation(evaluation){
     const evalSection = document.getElementById("evaluation");
 
-    evalSection.innerHTML =`Polarity:     ${evaluation.polarity}<br>
-                            Subjectivity: ${evaluation.subjectivity}`
+    evalSection.innerHTML =`Polarity    : ${evaluation.polarity}<br>
+                            Subjectivity: ${evaluation.subjectivity}<br>
+                            Texts       : ${evaluation.texts}`
 }
 
-module.exports = { handleSubmit, handleGetArticle, displayArticle, parseParagraph, handleEvaluate, removeP }
+module.exports = { handleSubmit, handleGetArticle, displayArticle, parseParagraph, concatParagraphs, handleEvaluate, removePWrapper }

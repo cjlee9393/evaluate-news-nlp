@@ -4,6 +4,7 @@ const fs = require('fs')
 
 const utils = require('./utils.js');
 const utilsIndex = require('../src/server/utils.index.js');
+const { doesNotReject } = require('assert');
 
 const testURL = 'https://en.wikipedia.org/wiki/French_Revolution';
 
@@ -18,5 +19,7 @@ describe('utilsIndex.fetchText() tests', () => {
         }
         
         expect(res).to.be.true;
+
+        doesNotReject();
     });
 });
