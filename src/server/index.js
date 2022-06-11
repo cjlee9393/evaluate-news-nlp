@@ -58,7 +58,12 @@ app.post('/getArticle', function (req, res) {
     utilsIndex.fetchText(url)
     .then((texts) => {
         res.json({texts: texts});
-    })
+    }).catch((error) => {
+        console.log('error: ', error);
+        if (error.code.localeCompare('ENOTFOUND') == 0){
+            res.status(400).json({error: "endpoint not found"});
+        }
+    });
 })
 
 app.post('/evaluateArticle', function (req, res) {

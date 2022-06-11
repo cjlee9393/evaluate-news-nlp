@@ -6,6 +6,7 @@
 * @returns {Object} Response data object from URL
 */
 async function postData(url = '', data = {}){
+
     const response = await fetch(url, {
         method: 'POST',
         credentials: 'same-origin',
@@ -14,13 +15,14 @@ async function postData(url = '', data = {}){
         },
         body: JSON.stringify(data)
     })
-
-    try{
-        const newData = await response.json();//.json();
-        return newData;
-    }catch(error){
-        console.log('error: ', error);
+    const status = response.status;
+    
+    if (status == 400){
+        throw 'ENOTFOUND';
     }
+
+    const newData = await response.json();//.json();
+    return newData;
 }
 
 module.exports = {postData}

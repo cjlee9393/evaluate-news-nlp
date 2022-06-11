@@ -6,6 +6,7 @@ fetch <p> elements from given url, randomly choose <p> element and return its te
 */
 async function fetchText(url){
     const res = await fetch(url);
+
     const html = await res.text();
 
     const dom = new jsdom.JSDOM(html)

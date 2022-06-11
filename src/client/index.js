@@ -42,6 +42,17 @@ function loadImages(event){
     rightBar.appendChild(poweredByDiv);
 }
 
+function refactorEnterKey(event){
+    if(event.which == 13){
+        if (event.target.nodeName == 'INPUT'){
+            event.preventDefault();
+            handleGetArticle(event);
+        }
+    }
+}
+
+document.addEventListener('keydown', refactorEnterKey);
+
 document.addEventListener('DOMContentLoaded', loadImages);
 
 export {checkForUrl, handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom, postData};

@@ -47,8 +47,13 @@ function handleGetArticle(event){
 
     Client.postData(`${serverUrl}getArticle`, {url: formText})
     .then(function(res) {
-        // TODO: display result to UI
+        console.log(res);
         displayArticle(res.texts);
+    })
+    .catch((error) => {
+        if (error.localeCompare('ENOTFOUND') == 0){
+            alert('could not connect to the URL');
+        }
     });
 }
 
