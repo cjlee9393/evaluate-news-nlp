@@ -19,14 +19,32 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
 ## Usage
 
 ### Web app
-1. Install dependencies with npm
-    1. remove entry of node-sass package from package.json
+1. Configure environment variable
+  - Create new .env file in the root of the project repo
+  - Fill the .env file with your API key for meaningCloud API
+    ```bash
+    API_KEY=**************************
+    ```
+
+2. Configure build environment
+  - Using docker
+    1. build image with dockerfile in the root of the project repo
+      ```bash
+      docker build . -t evaluate-news-nlp
+      ```
+    2. run docker image
+      ```bash
+      docker run -it -p 8080:8080 evaluate-news-nlp
+      ```
+    
+  - Not using docker
+    1. remove entry of node-sass package from package.json in the root of the project repo
     2. install dependencies
       ```bash
       # Initialize npm
       npm install --force
       ```
-    3. install node-sasspackage
+    3. install node-sass package
       ```bash
       npm install node-sass --legacy-peer-deps
       ```
@@ -34,27 +52,18 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
       ```bash
       npm install cors --force
       ```
-    - For reference, proposed set of packages with their versions are package.json file as well as in *Dependencies* section
+    5. install mocha package
+      ```bash
+      npm install mocha --force
+      ```
 
-2. Configure environment variable
-  - Make sure *dotenv* package is installed (it should have been automatically installed by installing dependencies with npm)
-  - Create new .env file in the root of the project
-  - Fill the .env file with your API key for meaningCloud API
-    ```bash
-    API_KEY=**************************
-    ```
+    - For reference, proposed set of packages with their versions are package.json file as well as in *Dependencies* section
 
 3. Build web app with webpack
   - Build in production mode
     ```bash
     # Build web app in production mode
     npm run build-prod
-    ```
-  
-  - Build in development mode
-    ```bash
-    # Build web app in development mode
-    npm run build-dev
     ```
 
 4. Run server and connect in browser
@@ -65,28 +74,19 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
     # Open Google Chrome
     open -a 'Google Chrome'
 
-    # connect to server address
+    # connect to http://HostURL:8080
     ```
 
-* Run Webpack dev server for development environment
+* Unit testing using Mocha framework
+    ```bash
+    npm run test
+    ```
+
+* Run Webpack dev server (only for not using docker)
     ```bash
     # run dev server in development mode
     npm run dev-server
     ```
-
-### Test code
-- Make sure cross-fetch, mocha, chai, fs, jsdom are installed in the project (They should have been automatically installed by installing dependencies with npm)
-  ```json
-  "scripts": {
-    "test": "mocha"
-  },
-  ```
-
-- Run test with mocha
-  ```bash
-  # Run tests
-  npm run test
-  ```
 
 ## Dependencies
 
