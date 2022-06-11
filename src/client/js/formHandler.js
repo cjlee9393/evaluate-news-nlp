@@ -1,3 +1,5 @@
+const nFirstWords = 5;
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -52,22 +54,60 @@ function handleGetArticle(event){
 
 function displayArticle(texts){
     const article = document.querySelector('article');
+    let para_i = 0;
 
     for (text of texts){
         const div = document.createElement('div');
         div.setAttribute('id', 'p__wrapper');
 
+        const {firstWords, remainWords, wordCount, charCount} = parseParagraph(text, nFirstWords); //nFirstWords are declared at the top as global
+
+        const paraInfoDiv = document.createElement('div');
+        paraInfoDiv.setAttribute('id', 'paraInfo');
+        paraInfoDiv.textContent = `paragaph num: ${++para_i} / num words: ${wordCount} / num chars: ${charCount}`;
+        div.appendChild(paraInfoDiv);
+
+        const h1 = document.createElement('h1');
+        h1.textContent = firstWords.join(' ');
+        div.appendChild(h1);
+
         const p = document.createElement('p');
         p.textContent = text;
         div.appendChild(p);
-        
+
+        const paraModDiv = document.createElement('div');
+        paraModDiv.setAttribute('id', 'paraMod');
+
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('id', 'isInclude');
+        checkbox.setAttribute('checked', "checked");
+        paraModDiv.appendChild(checkbox);
+
+        const checkboxLabel = document.createElement('label');
+        checkboxLabel.setAttribute('for', 'isInclude');
+        checkboxLabel.textContent = 'Include';
+        paraModDiv.appendChild(checkboxLabel)
+
         const button = document.createElement('button');
         button.innerHTML = "Remove";
         button.setAttribute('onclick', "return Client.removeP(event)");
-        div.appendChild(button);
+        paraModDiv.appendChild(button);
+
+        div.appendChild(paraModDiv);
 
         article.appendChild(div);
     }
+}
+
+function parseParagraph(text, n_firstWords){
+    const words = text.split(/\s+/);
+    const firstWords = words.slice(0, n_firstWords);
+    const remainWords = words.slice(n_firstWords);
+    const wordCount = words.length;
+    const charCount = text.length;
+
+    return {firstWords, remainWords, wordCount, charCount};
 }
 
 function removeP(event){
@@ -107,4 +147,4 @@ function displayEvaluation(evaluation){
                             Subjectivity: ${evaluation.subjectivity}`
 }
 
-module.exports = { handleSubmit, handleGetArticle, handleEvaluate, removeP }
+module.exports = { handleSubmit, handleGetArticle, displayArticle, parseParagraph, handleEvaluate, removeP }

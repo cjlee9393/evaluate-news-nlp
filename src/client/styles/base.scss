@@ -109,12 +109,38 @@ article {
     max-width: 800px;
     margin: 50px auto;
     
-    div{
+    div#p__wrapper{
        display: flex;
        flex-direction: column;
        background-color: white;
-       border-radius: 10px;
-       padding: 10px;
-       margin: 20px;
+       margin-top: 10px;
+       padding-top: 10px;
+       border-bottom: 1px solid gray;
+       
+       div#paraInfo{
+           font-size: 0.6em;
+           color: rgb(96,93,108);
+       }
+
+       h1{
+           font-size: 1.2em;
+           color: rgb(25,14,164)
+       }
+
+       div#paraMod{
+           display: flex;
+           flex-direction: row;
+           align-items: center;
+           justify-content: center;
+
+           input[type="checkbox"]{
+               max-width: 20px;
+           }
+
+           button{
+               margin-left: 30px;
+               width: 100px;
+           }
+       }
     }
 }

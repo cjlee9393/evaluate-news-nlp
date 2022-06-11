@@ -26,4 +26,16 @@ describe('formHandler.displayArticle() tests', () => {
     });
 });
 
+const textParagraph = "To split a string by multiple spaces, call the split() method, passing it a regular expression."
+const testNFirstWords = 5;
+describe('formHandler.parseParagraph tests', () => {
+    it('should return first 5 words, remain 11 words, wordCount 16, and charCount 95', () => {
+        const {firstWords, remainWords, wordCount, charCount} = formHandler.parseParagraph(textParagraph, testNFirstWords);
+
+        expect(firstWords.length).to.equal(testNFirstWords);
+        expect(remainWords.length).to.equal(16 - testNFirstWords);
+        expect(wordCount).to.equal(16);
+        expect(charCount).to.equal(95);
+    });
+});
 // formHandler.removeP() tests is omitted due to difficulty in simulating onclick.
