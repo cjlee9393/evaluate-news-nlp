@@ -110,15 +110,26 @@ section {
     background-color: white;
     
     &#evaluation{
-        background-color: salmon;
-    }
-}
+        background-color: papayawhip;
 
-section#instrWelcome {
-    h1{
-        font-size: 1.5em;
-        color: rgb(80, 176, 222);
-        text-shadow: 2px 2px 1px whitesmoke;
+        p{
+            font-size: 1.5em;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            span{
+                font-size: 1.5em;
+                color: rgb(80, 176, 222);
+                text-shadow: 2px 2px 1px whitesmoke;
+            }
+        }
+    }
+
+    &#instrWelcome {
+        h1{
+            font-size: 1.5em;
+            color: rgb(80, 176, 222);
+            text-shadow: 2px 2px 1px whitesmoke;
+        }
     }
 }
 

@@ -38,7 +38,7 @@ async function getAPIResponse(text, lang){
 
 function parseAPIResponse(body){
     // polarity, subjectivity, text
-    const polarity = body.agreement;
+    const polarity = body.score_tag;
     const subjectivity = body.subjectivity;
     
     const texts = [];

@@ -226,9 +226,37 @@ evaluation is parsed result of API response
 function displayEvaluation(evaluation){
     const evalSection = document.getElementById("evaluation");
 
-    evalSection.innerHTML =`Polarity    : ${evaluation.polarity}<br>
-                            Subjectivity: ${evaluation.subjectivity}<br>
-                            Texts       : ${evaluation.texts.join(' ')}`
+    let bgColor = '';
+    let polarity = '';
+    let polarityEmoji = '';
+    switch(evaluation.polarity){
+        case('P+'):
+            bgColor = 'papayawhip';
+            polarity = 'Strong Positive';
+            polarityEmoji = '😆';
+        case('P'):
+            bgColor = 'papayawhip';
+            polarity = 'Positive';
+            polarityEmoji = '🙂';
+        case('NEU'):
+            bgColor = 'white';
+            polarity = 'Neutral';
+            polarityEmoji = '😐';
+        case('N'):
+            bgColor = 'Linen';
+            polarity = 'Negative';
+            polarityEmoji = '😟';
+        case('N+'):
+            bgColor = 'Linen';
+            polarity = 'Strong Negative';
+            polairtyEmoji = '🙁';
+        case('None'):
+    }
+    evalSection.style.backgroundColor = bgColor;
+
+    evalSection.innerHTML =`<p><span>Polarity:</span> ${polarity}${polarityEmoji} </p>
+                            <p><span>Subjectivity:</span> ${evaluation.subjectivity.charAt(0)}${evaluation.subjectivity.slice(1).toLowerCase()} </p>
+                            <text> ${evaluation.texts.join(' ')} </text>`
 }
 
 function handleCheckAll(event){
