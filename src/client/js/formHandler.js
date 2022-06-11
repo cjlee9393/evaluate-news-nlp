@@ -30,6 +30,22 @@ function handleSubmit(event) {
     })
 }
 
+function toggleElementDisplay(query){
+    const element = document.querySelector(query);
+
+    console.log(element.style.display);
+
+    if (element.style.display.localeCompare("none") == 0){
+        element.style.display = "block";
+    }else if(element.style.display.localeCompare("block") == 0 || element.style.display == ''){
+        element.style.display = "none";
+    }else{
+        const error = new Error(`${query}.style.display is set to value other than \'none\' or \'block\'`)
+        error.name = "EToggleError"
+        throw error;
+    }
+}
+
 function handleGetArticle(event){
     event.preventDefault()
 
@@ -45,15 +61,29 @@ function handleGetArticle(event){
     console.log("::: Get Article Request Submitted :::")
     const serverUrl = window.location.href;
 
-    Client.postData(`${serverUrl}getArticle`, {url: formText})
+    (() => {
+        const res = Client.postData(`${serverUrl}getArticle`, {url: formText});
+
+        toggleElementDisplay('#instrWelcome');
+        toggleElementDisplay('#instrGetArticle');
+        toggleElementDisplay('#instrLoading');
+
+        return res;
+    })()
     .then(function(res) {
         console.log(res);
+
+        toggleElementDisplay('#instrLoading');
+        toggleElementDisplay('#instrEvaluate');
+
         displayArticle(res.texts);
     })
     .catch((error) => {
-        if (error.localeCompare('ENOTFOUND') == 0){
-            alert('could not connect to the URL');
-        }
+        toggleElementDisplay('#instrWelcome');
+        toggleElementDisplay('#instrGetArticle');
+
+        console.log('error', error);
+        alert(error.message);
     });
 }
 
@@ -153,10 +183,27 @@ function handleEvaluate(event){
     console.log("::: Evaluate Article Request Submitted :::")
     const serverUrl = window.location.href;
 
-    Client.postData(`${serverUrl}evaluateArticle`, {article: article})
+    (()=>{
+        const res = Client.postData(`${serverUrl}evaluateArticle`, {article: article});
+
+        toggleElementDisplay('#instrEvaluate');
+        toggleElementDisplay('#instrLoading');
+
+        return res;
+    })()
+    
     .then(function(res) {
+        toggleElementDisplay('#instrLoading');
+
         displayEvaluation(res);
     })
+    .catch((error) => {
+        toggleElementDisplay('#instrEvaluate');
+        toggleElementDisplay('#instrLoading');
+
+        console.log('error', error);
+        alert(error.message);
+    });
 
     const divs = document.querySelectorAll('div#p__wrapper');
 

@@ -42,6 +42,13 @@ function loadImages(event){
     rightBar.appendChild(poweredByDiv);
 }
 
+function displayInstructions(event){
+    document.querySelector('#instrWelcome').style.display = 'block';
+    document.querySelector('#instrGetArticle').style.display = 'block';
+    document.querySelector('#instrEvaluate').style.display = 'none';
+    document.querySelector('#instrLoading').style.display = 'none';
+}
+
 function refactorEnterKey(event){
     if(event.which == 13){
         if (event.target.nodeName == 'INPUT'){
@@ -54,5 +61,6 @@ function refactorEnterKey(event){
 document.addEventListener('keydown', refactorEnterKey);
 
 document.addEventListener('DOMContentLoaded', loadImages);
+document.addEventListener('DOMContentLoaded', displayInstructions);
 
 export {checkForUrl, handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom, postData};

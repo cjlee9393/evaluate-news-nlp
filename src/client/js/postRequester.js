@@ -18,7 +18,9 @@ async function postData(url = '', data = {}){
     const status = response.status;
     
     if (status == 400){
-        throw 'ENOTFOUND';
+        const error = new Error("cannot connect to the URL");
+        error.name = 'ENotFoundError';
+        throw error;
     }
 
     const newData = await response.json();//.json();
