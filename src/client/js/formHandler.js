@@ -167,4 +167,37 @@ function displayEvaluation(evaluation){
                             Texts       : ${evaluation.texts}`
 }
 
-module.exports = { handleSubmit, handleGetArticle, displayArticle, parseParagraph, concatParagraphs, handleEvaluate, removePWrapper }
+function handleCheckAll(event){
+    const checkboxes = document.querySelectorAll('input[type|=\"checkbox\"');
+
+    for (let checkbox of checkboxes){
+        checkbox.checked = true;
+    }
+}
+
+function handleUncheckAll(event){
+    const checkboxes = document.querySelectorAll('input[type|=\"checkbox\"');
+
+    for (let checkbox of checkboxes){
+        checkbox.checked = false;
+    }
+}
+
+function handleGoToTop(event){
+    window.scrollTo(0,0);
+}
+
+function getDocHeight() {	// $(document).height() value depends on browser
+    var D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
+    );
+}
+
+function handleGoToBottom(){
+    window.scrollTo(0, getDocHeight());
+}
+
+module.exports = { handleSubmit, handleGetArticle, displayArticle, parseParagraph, concatParagraphs, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom }

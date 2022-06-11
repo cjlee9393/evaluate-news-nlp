@@ -1,5 +1,5 @@
 import { checkForUrl } from './js/urlChecker'
-import { handleSubmit, handleGetArticle, handleEvaluate, removePWrapper } from './js/formHandler'
+import { handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom } from './js/formHandler'
 import { postData } from './js/postRequester'
 
 import meaningCloudLogo from './images/meaningCloudLogo.png';
@@ -44,4 +44,4 @@ function loadImages(event){
 
 document.addEventListener('DOMContentLoaded', loadImages);
 
-export {checkForUrl, handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, postData};
+export {checkForUrl, handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom, postData};
