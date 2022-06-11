@@ -150,9 +150,16 @@ function handleEvaluate(event){
 
     Client.postData(`${serverUrl}evaluateArticle`, {article: article})
     .then(function(res) {
-        console.log(res);
         displayEvaluation(res);
     })
+
+    const divs = document.querySelectorAll('div#p__wrapper');
+
+    for (let div of divs){
+        div.remove()
+    }
+
+    handleGoToTop();
 }
 
 /*
@@ -164,7 +171,7 @@ function displayEvaluation(evaluation){
 
     evalSection.innerHTML =`Polarity    : ${evaluation.polarity}<br>
                             Subjectivity: ${evaluation.subjectivity}<br>
-                            Texts       : ${evaluation.texts}`
+                            Texts       : ${evaluation.texts.join(' ')}`
 }
 
 function handleCheckAll(event){

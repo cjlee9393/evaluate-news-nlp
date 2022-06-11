@@ -9,10 +9,13 @@ body {
 }
 
 header {
+    background-color: white;
     grid-area: header;
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid gray;
+    position: sticky;
+    top: 0px;
 
     div#leftBar {
         width: 15%;
