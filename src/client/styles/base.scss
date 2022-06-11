@@ -155,10 +155,17 @@ article {
            color: rgb(96,93,108);
        }
 
-       h1{
-           font-size: 1.2em;
-           color: rgb(25,14,164)
-       }
+       div#paraContent{
+        h1{
+            color: black;
+            font-weight:bold;
+            display: inline;
+            margin-right: 0.3em;
+        }
+        p{
+            display: inline;
+        }
+       }       
 
        div#paraMod{
            display: flex;

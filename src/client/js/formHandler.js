@@ -1,4 +1,4 @@
-const nFirstWords = 5;
+const nFirstWords = 1;
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -102,13 +102,18 @@ function displayArticle(texts){
         paraInfoDiv.textContent = `paragaph num: ${++para_i} / num words: ${wordCount} / num chars: ${charCount}`;
         div.appendChild(paraInfoDiv);
 
+        const paraContentDiv = document.createElement('div');
+        paraContentDiv.setAttribute('id', 'paraContent');
+
         const h1 = document.createElement('h1');
         h1.textContent = firstWords.join(' ');
-        div.appendChild(h1);
+        paraContentDiv.appendChild(h1);
 
         const p = document.createElement('p');
         p.textContent = remainWords.join(' ');
-        div.appendChild(p);
+        paraContentDiv.appendChild(p);
+
+        div.appendChild(paraContentDiv);
 
         const paraModDiv = document.createElement('div');
         paraModDiv.setAttribute('id', 'paraMod');
