@@ -34,7 +34,7 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
       ```
     2. run docker image
       ```bash
-      docker run -it -p 8080:8080 evaluate-news-nlp
+      docker run -it -p 8080-8081:8080-8081 evaluate-news-nlp
       ```
     
   - Not using docker
