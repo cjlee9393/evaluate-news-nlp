@@ -1,6 +1,6 @@
 FROM node
 WORKDIR /home/node
-ADD evaluate-news-nlp ./evaluate-news-nlp
+ADD ../evaluate-news-nlp ./evaluate-news-nlp
 
 WORKDIR /home/node/evaluate-news-nlp
 RUN npm install --force
