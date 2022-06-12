@@ -83,6 +83,8 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
     ```
 
 * Run Webpack dev server (only for not using docker)
+  - make sure that the server is running (using instruction in 3 and 4)
+  - run dev server
     ```bash
     # run dev server in development mode
     npm run dev-server

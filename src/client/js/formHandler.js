@@ -1,4 +1,5 @@
 const nFirstWords = 1;
+const serverUrl = 'http://localhost:8080/'
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -13,8 +14,6 @@ function handleSubmit(event) {
     }
 
     console.log("::: Form Submitted :::")
-    const serverUrl = window.location.href;
-
     Client.postData(`${serverUrl}add`, {url: formText})
     .then(function(res) {
         const textDiv = document.getElementById('text')
@@ -58,8 +57,8 @@ function handleGetArticle(event){
         return;   
     }
 
-    console.log("::: Get Article Request Submitted :::")
-    const serverUrl = window.location.href;
+    console.log("::: Get Article Request Submitted :::");
+    // const serverUrl = window.location.href;
 
     (() => {
         const res = Client.postData(`${serverUrl}getArticle`, {url: formText});
@@ -185,8 +184,8 @@ function handleEvaluate(event){
 
     const article = concatParagraphs();
 
-    console.log("::: Evaluate Article Request Submitted :::")
-    const serverUrl = window.location.href;
+    console.log("::: Evaluate Article Request Submitted :::");
+    // const serverUrl = window.location.href;
 
     (()=>{
         const res = Client.postData(`${serverUrl}evaluateArticle`, {article: article});
