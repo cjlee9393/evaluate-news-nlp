@@ -1,5 +1,5 @@
 const nFirstWords = 1;
-const serverUrl = 'http://localhost:8080/';
+const serverUrl = window.location.href.split(':').slice(0,2).join(':') + ':8080/';
 
 function handleSubmit(event) {
     event.preventDefault()
