@@ -1,5 +1,5 @@
 const nFirstWords = 1;
-const serverUrl = 'http://localhost:8080/'
+const serverUrl = 'http://localhost:8080/';
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -32,8 +32,6 @@ function handleSubmit(event) {
 function toggleElementDisplay(query){
     const element = document.querySelector(query);
 
-    console.log(element.style.display);
-
     if (element.style.display.localeCompare("none") == 0){
         element.style.display = "block";
     }else if(element.style.display.localeCompare("block") == 0 || element.style.display == ''){
@@ -47,6 +45,8 @@ function toggleElementDisplay(query){
 
 function handleGetArticle(event){
     event.preventDefault()
+
+    Client.initMain();
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
@@ -70,8 +70,6 @@ function handleGetArticle(event){
         return res;
     })()
     .then(function(res) {
-        console.log(res);
-
         toggleElementDisplay('#instrLoading');
         toggleElementDisplay('#instrEvaluate');
 
@@ -184,6 +182,13 @@ function handleEvaluate(event){
 
     const article = concatParagraphs();
 
+    try{
+        Client.checkForArticle(article);
+    }catch(error){
+        alert(error);
+        return
+    }
+
     console.log("::: Evaluate Article Request Submitted :::");
     // const serverUrl = window.location.href;
 
@@ -233,22 +238,27 @@ function displayEvaluation(evaluation){
             bgColor = 'papayawhip';
             polarity = 'Strong Positive';
             polarityEmoji = '😆';
+            break;
         case('P'):
             bgColor = 'papayawhip';
             polarity = 'Positive';
             polarityEmoji = '🙂';
+            break;
         case('NEU'):
             bgColor = 'white';
             polarity = 'Neutral';
             polarityEmoji = '😐';
+            break;
         case('N'):
             bgColor = 'Linen';
             polarity = 'Negative';
             polarityEmoji = '😟';
+            break;
         case('N+'):
             bgColor = 'Linen';
             polarity = 'Strong Negative';
             polairtyEmoji = '🙁';
+            break;
         case('None'):
     }
     evalSection.style.backgroundColor = bgColor;

@@ -1,4 +1,4 @@
-import { checkForUrl } from './js/urlChecker'
+import { checkForUrl, checkForArticle } from './js/urlChecker'
 import { handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom } from './js/formHandler'
 import { postData } from './js/postRequester'
 
@@ -49,6 +49,21 @@ function displayInstructions(event){
     document.querySelector('#instrLoading').style.display = 'none';
 }
 
+function initArticle(){
+    document.querySelector('article').innerHTML = '';
+}
+
+function initEvaluation(){
+    document.querySelector('#evaluation').innerHTML = '';
+}
+
+function initMain(){
+    initArticle();
+    initEvaluation();
+
+    displayInstructions(event);
+}
+
 function refactorEnterKey(event){
     if(event.which == 13){
         if (event.target.nodeName == 'INPUT'){
@@ -63,4 +78,4 @@ document.addEventListener('keydown', refactorEnterKey);
 document.addEventListener('DOMContentLoaded', loadImages);
 document.addEventListener('DOMContentLoaded', displayInstructions);
 
-export {checkForUrl, handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom, postData};
+export {checkForUrl, checkForArticle, handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleCheckAll, handleUncheckAll, handleGoToTop, handleGoToBottom, initMain, postData};

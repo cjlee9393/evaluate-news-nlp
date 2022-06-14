@@ -14,4 +14,14 @@ function checkForUrl(inputUrl) {
     return;
 }
 
-module.exports = { checkForUrl }
+function checkForArticle(article) {
+    console.log("::: Running checkForArticle :::");
+
+    if(article == ''){
+        const error = new Error("Article is empty. Please click \'Get Article\' button and try again.");
+        error.name = 'ABlackError';
+        throw error;
+    }
+}
+
+module.exports = { checkForUrl, checkForArticle }
