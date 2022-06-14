@@ -260,6 +260,9 @@ function displayEvaluation(evaluation){
             polairtyEmoji = '🙁';
             break;
         case('None'):
+            bgColor = 'white';
+            polarity = 'None';
+            polarityEmoji = '';
     }
     evalSection.style.backgroundColor = bgColor;
 
