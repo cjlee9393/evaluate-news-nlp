@@ -3,7 +3,7 @@ import { handleSubmit, handleGetArticle, handleEvaluate, removePWrapper, handleC
 import { postData } from './js/postRequester'
 
 import meaningCloudLogo from './images/meaningCloudLogo.png';
-import udacityLogo from './images/udacityLogo.svg';
+import ProjectLogo from './images/projectLogo.png';
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -20,7 +20,7 @@ function loadImages(event){
     poweredByDiv.setAttribute('id', 'poweredBy');
 
     const logoImg = document.createElement('img');
-    logoImg.setAttribute('src', udacityLogo);
+    logoImg.setAttribute('src', ProjectLogo);
     logoImg.setAttribute('width', '100%');
     logoImg.setAttribute('height', '100%');
     logoImg.setAttribute('object-fit', 'contain');

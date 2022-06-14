@@ -82,11 +82,11 @@ a fairly new API called MeaningCloud has put a public facing API in front of the
     npm run test
     ```
 
-* Run Webpack dev server (only for not using docker)
+* Run Webpack dev server
   - make sure that the server is running (using instruction in 3 and 4)
   - run dev server
     ```bash
-    # run dev server in development mode
+    # dev server is configured to run in port 8081
     npm run dev-server
     ```
 
