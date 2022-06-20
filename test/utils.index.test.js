@@ -1,10 +1,9 @@
-const expect = require('chai').expect;
-const jsdom = require('jsdom');
-const fs = require('fs')
+// const jsdom = require('jsdom');
+// const fs = require('fs')
 
 const utils = require('./utils.js');
 const utilsIndex = require('../src/server/utils.index.js');
-const { doesNotReject } = require('assert');
+// const { doesNotReject } = require('assert');
 
 const testURL = 'https://en.wikipedia.org/wiki/French_Revolution';
 
@@ -18,8 +17,8 @@ describe('utilsIndex.fetchText() tests', () => {
             res = res && utils.isString(text)
         }
         
-        expect(res).to.be.true;
+        expect(res).toBe(true);
 
-        doesNotReject();
+        // doesNotReject();
     });
 });

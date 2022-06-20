@@ -88,7 +88,7 @@ function displayArticle(texts){
     const article = document.querySelector('article');
     let para_i = 0;
 
-    for (text of texts){
+    for (let text of texts){
         const div = document.createElement('div');
         div.setAttribute('id', 'p__wrapper');
 

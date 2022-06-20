@@ -1,9 +1,7 @@
-const expect = require('chai').expect;
 const fs = require('fs');
 
 const utils = require('./utils.js');
 const mockAPI = require('../src/server/mockAPI.js');
-const { doesNotReject } = require('assert');
 
 const testText = "The restaurant was great even though it’s not near Madrid.";
 const testLang = "en";
@@ -23,10 +21,9 @@ describe('mockAPI.getAPIResponse() tests', () => {
     it('should return status of 200 and body.agreement of string', async () => {
         const {status, body} = await mockAPI.getAPIResponse(testText, testLang);
 
-        expect(status).to.equal(200);
-        expect(utils.isString(body.agreement)).to.be.true;
+        expect(status).toEqual(200);
+        expect(utils.isString(body.agreement)).toBe(true);
 
-        doesNotReject();
     });
 });
 
@@ -35,12 +32,12 @@ describe('mockAPI.parseAPIResponse() tests', () => {
     const {polarity, subjectivity, texts} = mockAPI.parseAPIResponse(responseBody);
     
     it('should return polarity of string', () => {
-        expect(utils.isString(polarity)).to.be.true;
+        expect(utils.isString(polarity)).toBe(true);
     });
     it('should return subjectivity of string', () => {
-        expect(utils.isString(subjectivity)).to.be.true;
+        expect(utils.isString(subjectivity)).toBe(true);
     });
     it('should return first element of array as string', () => {
-        expect(utils.isString(texts[0])).to.be.true;
+        expect(utils.isString(texts[0])).toBe(true);
     });
 });
